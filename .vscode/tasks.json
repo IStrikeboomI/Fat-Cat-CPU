@@ -1,0 +1,16 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "Instruction Memory Simulation",
+        "type": "shell",
+        "command": "iverilog -g2012 -c files.txt -o testbenches/instruction_memory_testbench.out testbenches/instruction_memory_testbench.v && vvp testbenches/instruction_memory_testbench.out",
+        "problemMatcher": [],
+        "group": 
+        {
+          "kind": "build",
+          "isDefault": true
+        },
+      }
+    ]
+}

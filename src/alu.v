@@ -21,6 +21,7 @@ module alu(
     input wire [7:0] a,
     input wire [7:0] b,
     input wire [3:0] op,
+    input wire carry_in = 0,
     output reg [7:0] result,
     output reg zero,
     output reg carry,
@@ -70,7 +71,7 @@ module alu(
             end
             4'b1011: result = -a; // NEG
             4'b1110: begin // ADC (Add with Carry)
-                sum = a + b + carry;
+                sum = a + b + carry_in;
                 result = sum[7:0];
                 carry = sum[8];
                 overflow = (a[7] == b[7]) && (result[7] != a[7]);
