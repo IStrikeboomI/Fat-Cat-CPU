@@ -11,8 +11,8 @@
     1001	SUB
     1010	MUL
     1011	NEG
-    1100	NOP (addi)
-    1101	NOP (muli)
+    1100	ADDI
+    1101	MULI
     1110	ADC
     1111	CMP
 
@@ -49,7 +49,7 @@ module alu(
             4'b0101:result = a << b; // LSL
             4'b0110:result = a >> b; // LSR
             4'b0111: result = $signed(a) >>> b; // ASR
-            4'b1000: begin // ADD
+            4'b1000,4'b1100: begin // ADD
                 sum = a + b;
                 result = sum[7:0];
                 carry = sum[8];
@@ -63,7 +63,7 @@ module alu(
                 overflow = (a[7] != b_comp[7]) && (result[7] != a[7]);
                 zero = (result == 0);
             end
-            4'b1010: begin
+            4'b1010,4'b1101: begin
                 mul_result = a * b; // MUL
                 result = mul_result[7:0];
                 carry = (mul_result > 8'hFF); // Check if upper byte is non-zero
