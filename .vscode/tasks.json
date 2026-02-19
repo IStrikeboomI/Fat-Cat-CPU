@@ -37,7 +37,7 @@
       {
         "label": "Fat Cat CPU Simulation",
         "type": "shell",
-        "command": "iverilog -g2012 -c files.txt -o testbenches/fat_cat_cpu_testbench.out testbenches/fat_cat_cpu_testbench.v && vvp testbenches/fat_cat_cpu_testbench.out",
+        "command": "iverilog -g2012 -c files.txt -o testbenches/fat_cat_cpu_testbench.out testbenches/fat_cat_cpu_testbench.v && vvp testbenches/fat_cat_cpu_testbench.out > output.txt",
         "problemMatcher": [],
         "group": 
         {

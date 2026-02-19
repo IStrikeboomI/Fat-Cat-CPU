@@ -75,7 +75,7 @@ module fat_cat_cpu(
     alu alu_unit (
         .op(alu_opcode),
         .a(rs_data),
-        .b(isImm ? imm5 : rt_data),
+        .b(isImm ? {3'b0, imm5} : rt_data),
         .carry_in(pass_carry ? carry_out : 1'b0),
         .result(alu_result),
         .carry(carry_out),

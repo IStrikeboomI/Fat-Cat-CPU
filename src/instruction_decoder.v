@@ -8,6 +8,7 @@ module instruction_decoder(
     output wire [4:0] imm5,
     output reg pass_carry,
     output reg isImm,
+    
 
     output reg mem_read,
     output reg mem_write,
@@ -32,7 +33,7 @@ module instruction_decoder(
     
     assign rd_wire = instruction[2:0];
     assign rt = (opcode == 5'b00010 || opcode == 5'b01111) ? rd_wire : instruction[7:5]; // for store instructions the value to store is in rd field, but the instruction decoder changes the rt addr so the reg file can read it as normal and we dont need a separate mux for store instructions in the reg file
-    assign imm5 = instruction[4:0];
+    assign imm5 = instruction[7:3]; //11100 rs imm5 rd
     assign jump_addr11 = instruction[10:0];
     assign mem_addr8 = instruction[10:3];
 

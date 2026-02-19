@@ -1,3 +1,5 @@
 ~$Instruction Set.xlsx
 .Fat_Cat_CPU.circ.autosave
-*.vcd
+testbenches/*.vcd
+output.txt
+testbenches/fat_cat_cpu_testbench.vcd

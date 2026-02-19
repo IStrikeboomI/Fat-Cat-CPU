@@ -21,7 +21,8 @@ module alu(
     input wire [7:0] a,
     input wire [7:0] b,
     input wire [3:0] op,
-    input wire carry_in = 0,
+    input wire carry_in,
+    input wire overflow_in,
     output reg [7:0] result,
     output reg zero,
     output reg carry,
@@ -33,11 +34,7 @@ module alu(
     reg [15:0] mul_result; // for multiplication
 
     always @(*) begin
-        // Default flags
-        zero = 0;
-        carry = 0;
-        sign = 0;
-        overflow = 0;
+
         sum = 9'b0;
 
         case (op)
@@ -52,40 +49,31 @@ module alu(
             4'b1000,4'b1100: begin // ADD
                 sum = a + b;
                 result = sum[7:0];
-                carry = sum[8];
-                overflow = (a[7] == b[7]) && (result[7] != a[7]);
             end
             4'b1001: begin // SUB
                 b_comp = ~b + 1; // Two's complement of b
                 sum = a + b_comp;
                 result = sum[7:0];
-                carry = sum[8];
-                overflow = (a[7] != b_comp[7]) && (result[7] != a[7]);
-                zero = (result == 0);
             end
             4'b1010,4'b1101: begin
                 mul_result = a * b; // MUL
                 result = mul_result[7:0];
-                carry = (mul_result > 8'hFF); // Check if upper byte is non-zero
-                overflow = (mul_result > 8'hFF); // For simplicity, treat overflow same as carry
             end
             4'b1011: result = -a; // NEG
             4'b1110: begin // ADC (Add with Carry)
                 sum = a + b + carry_in;
                 result = sum[7:0];
-                carry = sum[8];
-                overflow = (a[7] == b[7]) && (result[7] != a[7]);
             end
             4'b1111: begin // CMP (compare)
-                sum = a - b;
-                zero = (sum[7:0] == 0);
+                b_comp = ~b + 1; // Two's complement of b
+                sum = a + b_comp;
                 carry = sum[8];
-                overflow = (a[7] != b[7]) && (sum[7] != a[7]);
+                overflow = (a[7] != b_comp[7]) && (sum[7] != a[7]);
+                zero = (sum[7:0] == 0);
+                sign = sum[7];
                 result = 8'b0; // CMP does not produce a result
             end
             default: result = 8'b0;
         endcase
-        zero = (result == 0);
-        sign = result[7];
     end
 endmodule

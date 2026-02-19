@@ -27,7 +27,7 @@ module fat_cat_cpu_testbench;
         // Execution Loop
         while (!uut.halt) begin
             @(posedge clk);
-             $display("Time: %t | PC: %h | Instr: %b", $time, uut.pc, uut.instruction);
+             $display("Time: %t | PC: %h | Instr: %b | R1: %d | R2: %d | R3: %d | R4: %d | R5: %d | R6:%d | Zero=%d | Carry=%d | Overflow=%d | Sign=%d", $time, uut.pc, uut.instruction, uut.rfile.registers[1], uut.rfile.registers[2],uut.rfile.registers[3],uut.rfile.registers[4],uut.rfile.registers[5], uut.rfile.registers[6], uut.zero, uut.carry_out, uut.overflow, uut.sign);
         end
 
         // Execution has halted [cite: 67, 83]
