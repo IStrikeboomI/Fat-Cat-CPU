@@ -117,7 +117,6 @@ module instruction_decoder(
                 addr_is_reg = 1;
             end
             5'b01111: begin  //STORER
-                // Reserved
                 mem_write = 1;
                 addr_is_reg = 1;
             end
