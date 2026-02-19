@@ -1,12 +1,12 @@
 module fat_cat_cpu(
     input wire clk,
     input wire rst
-)   
+);
     //Program counter
     reg [10:0] pc;
     reg [10:0] pc_next;
-    always @(posedge clk or posedge reset) begin
-        if (reset) begin
+    always @(posedge clk or posedge rst) begin
+        if (rst) begin
             pc <= 11'b0;
         end else begin
             pc <= pc_next;
@@ -58,25 +58,25 @@ module fat_cat_cpu(
     //Register file
     wire [7:0] rs_data, rt_data;
     reg[7:0] wb_data;
-    reg_file (
+    reg_file rfile(
         .clk(clk),
         .rst(rst),
-        .reg_write(reg_write),
-        .rs(rs),
-        .rt(rt),
-        .rd(rd),
-        .write_data(wb_data),
-        .rs_data(rs_data),
-        .rt_data(rt_data)
+        .we(reg_write),
+        .ra1(rs),
+        .ra2(rt),
+        .wa(rd),
+        .wd(wb_data),
+        .rd1(rs_data),
+        .rd2(rt_data)
     );
     //ALU
     wire [7:0] alu_result;
     reg carry_out, zero, sign, overflow;
     alu alu_unit (
-        .opcode(alu_opcode),
+        .op(alu_opcode),
         .a(rs_data),
         .b(isImm ? imm5 : rt_data),
-        .carry_in(pass_carry ? carry_out : 0),
+        .carry_in(pass_carry ? carry_out : 1'b0),
         .result(alu_result),
         .carry(carry_out),
         .zero(zero),
@@ -101,7 +101,7 @@ module fat_cat_cpu(
         .mem_write(mem_write),
         .mem_read(mem_read),
         .address(addr_is_reg ? rs_data : mem_addr8),
-        .write_data(rd_data), // store value is always in rd for store instructions
+        .write_data(rt_data), // store value is always in rt even though it says rd in the instruction set, but the instruction decoder changes the rt addr to what ever the rd said in the opcode
         .read_data(mem_read_data)
     );
     reg branch_taken;

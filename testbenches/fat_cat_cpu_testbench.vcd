@@ -1,0 +1,472 @@
+$date
+	Thu Feb 19 13:06:23 2026
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module fat_cat_cpu_testbench $end
+$var reg 1 ! clk $end
+$var reg 1 " rst $end
+$var integer 32 # i [31:0] $end
+$scope module uut $end
+$var wire 1 ! clk $end
+$var wire 1 " rst $end
+$var wire 1 $ zero $end
+$var wire 2 % wb_sel [1:0] $end
+$var wire 1 & sign $end
+$var wire 8 ' rt_data [7:0] $end
+$var wire 3 ( rt [2:0] $end
+$var wire 8 ) rs_data [7:0] $end
+$var wire 3 * rs [2:0] $end
+$var wire 1 + reg_write $end
+$var wire 3 , rd [2:0] $end
+$var wire 11 - pc_next [10:0] $end
+$var wire 1 . pass_carry $end
+$var wire 1 / overflow $end
+$var wire 1 0 mem_write $end
+$var wire 8 1 mem_read_data [7:0] $end
+$var wire 1 2 mem_read $end
+$var wire 8 3 mem_addr8 [7:0] $end
+$var wire 11 4 jump_addr11 [10:0] $end
+$var wire 1 5 jump $end
+$var wire 1 6 isImm $end
+$var wire 16 7 instruction [15:0] $end
+$var wire 5 8 imm5 [4:0] $end
+$var wire 1 9 halt $end
+$var wire 1 : carry_out $end
+$var wire 1 ; branch $end
+$var wire 8 < alu_result [7:0] $end
+$var wire 4 = alu_opcode [3:0] $end
+$var wire 1 > addr_is_reg $end
+$var reg 1 ? branch_taken $end
+$var reg 11 @ pc [10:0] $end
+$var reg 8 A wb_data [7:0] $end
+$scope module alu_unit $end
+$var wire 8 B b [7:0] $end
+$var wire 1 C carry_in $end
+$var wire 4 D op [3:0] $end
+$var wire 8 E a [7:0] $end
+$var reg 8 F b_comp [7:0] $end
+$var reg 1 : carry $end
+$var reg 16 G mul_result [15:0] $end
+$var reg 1 / overflow $end
+$var reg 8 H result [7:0] $end
+$var reg 1 & sign $end
+$var reg 9 I sum [8:0] $end
+$var reg 1 $ zero $end
+$upscope $end
+$scope module dmem $end
+$var wire 8 J address [7:0] $end
+$var wire 1 ! clk $end
+$var wire 1 " rst $end
+$var wire 8 K write_data [7:0] $end
+$var wire 1 0 mem_write $end
+$var wire 1 2 mem_read $end
+$var reg 8 L read_data [7:0] $end
+$var integer 32 M i [31:0] $end
+$upscope $end
+$scope module idec $end
+$var wire 3 N rt [2:0] $end
+$var wire 3 O rs [2:0] $end
+$var wire 3 P rd_wire [2:0] $end
+$var wire 5 Q opcode [4:0] $end
+$var wire 8 R mem_addr8 [7:0] $end
+$var wire 11 S jump_addr11 [10:0] $end
+$var wire 16 T instruction [15:0] $end
+$var wire 5 U imm5 [4:0] $end
+$var reg 1 > addr_is_reg $end
+$var reg 4 V alu_opcode [3:0] $end
+$var reg 1 ; branch $end
+$var reg 1 9 halt $end
+$var reg 1 6 isImm $end
+$var reg 1 5 jump $end
+$var reg 1 2 mem_read $end
+$var reg 1 0 mem_write $end
+$var reg 1 . pass_carry $end
+$var reg 3 W rd [2:0] $end
+$var reg 1 + reg_write $end
+$var reg 2 X wb_sel [1:0] $end
+$upscope $end
+$scope module imem $end
+$var wire 11 Y address [10:0] $end
+$var reg 16 Z instruction [15:0] $end
+$var integer 32 [ i [31:0] $end
+$upscope $end
+$scope module rfile $end
+$var wire 1 ! clk $end
+$var wire 3 \ ra1 [2:0] $end
+$var wire 3 ] ra2 [2:0] $end
+$var wire 1 " rst $end
+$var wire 3 ^ wa [2:0] $end
+$var wire 8 _ wd [7:0] $end
+$var wire 1 + we $end
+$var wire 8 ` rd2 [7:0] $end
+$var wire 8 a rd1 [7:0] $end
+$scope begin $unm_blk_11 $end
+$var integer 32 b i [31:0] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+$comment Show the parameter values. $end
+$dumpall
+$end
+#0
+$dumpvars
+b1000 b
+b0 a
+b0 `
+b1011010 _
+b1 ^
+b110 ]
+b10 \
+b100000000000 [
+b1101011010001 Z
+b0 Y
+b10 X
+b1 W
+b0 V
+b10001 U
+b1101011010001 T
+b1011010001 S
+b1011010 R
+b11 Q
+b1 P
+b10 O
+b110 N
+b100000000 M
+b0 L
+b0 K
+b1011010 J
+b0 I
+b0 H
+bx G
+bx F
+b0 E
+b0 D
+0C
+b10001 B
+b1011010 A
+b0 @
+0?
+0>
+b0 =
+b0 <
+0;
+0:
+09
+b10001 8
+b1101011010001 7
+16
+05
+b1011010001 4
+b1011010 3
+02
+b0 1
+00
+0/
+0.
+b1 -
+b1 ,
+1+
+b10 *
+b0 )
+b110 (
+b0 '
+0&
+b10 %
+1$
+bx #
+1"
+0!
+$end
+#5
+b1000 b
+b100000000 M
+1!
+#10
+0!
+0"
+#15
+1$
+b10 -
+b10 J
+b10 A
+b10 _
+b10010 B
+b0 (
+b0 N
+b0 ]
+b10 %
+b10 X
+1+
+b10 ,
+b10 W
+b10 ^
+16
+b10 3
+b10 R
+b10010 4
+b10010 S
+b10010 8
+b10010 U
+b10 P
+b0 *
+b0 O
+b0 \
+b1100000010010 7
+b1100000010010 T
+b1100000010010 Z
+b1 @
+b1 Y
+1!
+#20
+0!
+#25
+b10 '
+b10 K
+b10 `
+b1011100 <
+b1011100 H
+b1011100 I
+0$
+b11 -
+b101000 J
+b1011100 A
+b1011100 _
+b10 B
+b10 (
+b10 N
+b10 ]
+b1011010 )
+b1011010 E
+b1011010 a
+b1000 =
+b1000 D
+b1000 V
+b0 %
+b0 X
+1+
+b11 ,
+b11 W
+b11 ^
+06
+b101000 3
+b101000 R
+b101000011 4
+b101000011 S
+b11 8
+b11 U
+b11 P
+b1 *
+b1 O
+b1 \
+b11000 Q
+b1100000101000011 7
+b1100000101000011 T
+b1100000101000011 Z
+b10 @
+b10 Y
+1!
+#30
+0!
+#35
+b1011100 B
+b0 A
+b0 _
+b1011100 '
+b1011100 K
+b1011100 `
+1$
+b0 <
+b0 H
+b0 I
+b100 -
+b0 J
+b11 (
+b11 N
+b11 ]
+b0 )
+b0 E
+b0 a
+10
+0+
+b0 =
+b0 D
+b0 V
+b0 3
+b0 R
+b11 4
+b11 S
+b0 *
+b0 O
+b0 \
+b10 Q
+b1000000000011 7
+b1000000000011 T
+b1000000000011 Z
+b11 @
+b11 Y
+1!
+#40
+0!
+#45
+b10 A
+b10 _
+b10 <
+b10 H
+0$
+b101 -
+b10 J
+b10 )
+b10 E
+b10 a
+1>
+10
+b1000000 3
+b1000000 R
+b1000000011 4
+b1000000011 S
+b10 *
+b10 O
+b10 \
+b1111 Q
+b111101000000011 7
+b111101000000011 T
+b111101000000011 Z
+b100 @
+b100 Y
+1!
+#50
+0!
+#55
+b0 B
+b0 '
+b0 K
+b0 `
+1$
+b0 <
+b0 H
+b1011100 1
+b1011100 L
+b0 J
+b110 -
+b1011100 A
+b1011100 _
+b0 (
+b0 N
+b0 ]
+b0 )
+b0 E
+b0 a
+1+
+b1 %
+b1 X
+12
+b100 ,
+b100 W
+b100 ^
+0>
+00
+b0 3
+b0 R
+b100 4
+b100 S
+b100 8
+b100 U
+b100 P
+b0 *
+b0 O
+b0 \
+b1 Q
+b100000000100 7
+b100000000100 T
+b100000000100 Z
+b101 @
+b101 Y
+1!
+#60
+0!
+#65
+b10 <
+b10 H
+0$
+b111 -
+b10 J
+b10 )
+b10 E
+b10 a
+1>
+b1 %
+b1 X
+1+
+b101 ,
+b101 W
+b101 ^
+12
+b1000000 3
+b1000000 R
+b1000000101 4
+b1000000101 S
+b101 8
+b101 U
+b101 P
+b10 *
+b10 O
+b10 \
+b1110 Q
+b111001000000101 7
+b111001000000101 T
+b111001000000101 Z
+b110 @
+b110 Y
+1!
+#70
+0!
+#75
+1$
+b0 <
+b0 H
+b0 J
+b0 1
+b0 L
+b0 A
+b0 _
+b0 )
+b0 E
+b0 a
+19
+b0 %
+b0 X
+0+
+b0 ,
+b0 W
+b0 ^
+0>
+02
+b0 3
+b0 R
+b0 4
+b0 S
+b0 8
+b0 U
+b0 P
+b0 *
+b0 O
+b0 \
+b0 Q
+b0 7
+b0 T
+b0 Z
+b111 @
+b111 Y
+1!
+#80
+0!
+#85
+b100 #
+1!
