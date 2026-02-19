@@ -47,7 +47,7 @@ module fat_cat_cpu_testbench;
         $display("\n--- Data Memory (First 16 Bytes) ---");
         $display("Addr | Value (Hex) | Value (Dec)");
         $display("-----|-------------|------------");
-        for (i = 0; i < 4; i = i + 1) begin
+        for (i = 0; i < 128; i = i + 1) begin
             // Accessing internal ram array from data_memory module 
             $display("0x%02h | %h          | %d", i, uut.dmem.ram[i], uut.dmem.ram[i]);
         end
