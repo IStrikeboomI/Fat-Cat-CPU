@@ -49,11 +49,13 @@ module alu(
             4'b1000,4'b1100: begin // ADD
                 sum = a + b;
                 result = sum[7:0];
+				carry = sum[8];
             end
             4'b1001: begin // SUB
                 b_comp = ~b + 1; // Two's complement of b
                 sum = a + b_comp;
                 result = sum[7:0];
+				carry = sum[8];
             end
             4'b1010,4'b1101: begin
                 mul_result = a * b; // MUL
@@ -63,12 +65,12 @@ module alu(
             4'b1110: begin // ADC (Add with Carry)
                 sum = a + b + carry_in;
                 result = sum[7:0];
+				carry = sum[8];
             end
             4'b1111: begin // CMP (compare)
-                b_comp = ~b + 1; // Two's complement of b
-                sum = a + b_comp;
+                sum = a -b;
                 carry = sum[8];
-                overflow = (a[7] != b_comp[7]) && (sum[7] != a[7]);
+                overflow = (a[7] != b[7]) && (sum[7] != a[7]);
                 zero = (sum[7:0] == 0);
                 sign = sum[7];
                 result = 8'b0; // CMP does not produce a result

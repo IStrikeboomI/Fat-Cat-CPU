@@ -12,7 +12,7 @@ module instruction_decoder(
 
     output reg mem_read,
     output reg mem_write,
-    output reg [7:0] mem_addr8,
+    output wire [7:0] mem_addr8,
     output reg addr_is_reg, // if 1 then mem_addr8 is actually a register number whose value is the address to access
 
     output reg reg_write,
@@ -109,7 +109,7 @@ module instruction_decoder(
                 jump = 1;
             end
             5'b01101: begin //MOVE
-                alu_opcode = 4'b0000; // PASS THRU
+                 // PASS THRU ALU
                 reg_write = 1;
             end
             5'b01110: begin //LOADR
