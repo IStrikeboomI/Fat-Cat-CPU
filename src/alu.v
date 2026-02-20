@@ -70,7 +70,7 @@ module alu(
             4'b1111: begin // CMP (compare)
                 sum = a -b;
                 carry = sum[8];
-                overflow = (a[7] != b[7]) && (sum[7] != a[7]);
+                overflow = (a[7] == b[7]) && (sum[7] != a[7]);
                 zero = (sum[7:0] == 0);
                 sign = sum[7];
                 result = 8'b0; // CMP does not produce a result

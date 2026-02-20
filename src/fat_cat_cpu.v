@@ -1,10 +1,10 @@
 module fat_cat_cpu(
-    input wire clk,
+    input wire clk	,
     input wire rst
 );
     //Program counter
     reg [10:0] pc;
-    reg [10:0] pc_next;
+    wire [10:0] pc_next;
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             pc <= 11'b0;
