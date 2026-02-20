@@ -1,3 +1,6 @@
 src/alu.v
 src/instruction_memory.v
 src/reg_file.v
+src/data_memory.v
+src/instruction_decoder.v
+src/fat_cat_cpu.v

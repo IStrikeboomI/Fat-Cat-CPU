@@ -9,7 +9,8 @@ module instruction_memory(
         for (i = 0; i < 2048; i = i + 1) begin
             memory[i] = 16'h0000;
         end
-        $readmemb("programs/simple_add.bin", memory,0,3);
+        //$readmemb("programs/simple_add.bin", memory);
+        $readmemb("programs/fibbonaci.bin", memory);
     end
 
     always @(*) begin
